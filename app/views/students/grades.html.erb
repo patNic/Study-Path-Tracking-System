@@ -1,0 +1,60 @@
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <%= render partial: "shared/navigation", object: @study_plan %>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/student/dashboard">Student</a>
+        </li>
+        <li class="breadcrumb-item active">Grades</li>
+      </ol>
+      <% @myGrades.each_with_index do |content, i|%>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card mb-3">
+              <div class="card-header">
+                <i class="fa fa-fw fa-address-card"></i> <%= content[0][:subj] %>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>Subject</th>
+                        <th>Units</th>
+                        <th>Final Grade</th>
+                        <th>Remarks</th>
+                        <th>Completion Grade</th>
+                        <th>Remarks</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% for i in 1..(content.length - 2)%>
+                        <tr class="<%= content[i][:class] %>">
+                          <td><%= content[i][:subj] %></td>
+                          <td><%= content[i][:units] %></td>
+                          <td><%= content[i][:finalGrade] %></td>
+                          <td><%= content[i][:rem1] %></td>
+                          <td><%= content[i][:completionGrade] %></td>
+                          <td><%= content[i][:rem2] %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="card-footer small text-muted">
+                <i class="fa fa-fw fa-database"></i><%= content[(content.length - 1)][:subj] %><br>
+                <i class="fa fa-fw fa-heartbeat"></i><%= content[(content.length - 1)][:units] %><br>
+                <i class="fa fa-fw fa-bar-chart"></i><%= content[(content.length - 1)][:finalGrade] %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%= render "shared/logout_modal" %>
+    </div>
+    <%= render "shared/footer" %>
+  </div>
+</body>

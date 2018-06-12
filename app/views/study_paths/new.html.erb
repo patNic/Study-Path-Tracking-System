@@ -1,0 +1,38 @@
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <%= render partial: "shared/navigation", object: @study_path %>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/student/dashboard">Student</a>
+        </li>
+        <li class="breadcrumb-item">
+          <%= link_to "Study Path", study_path_path(@study_path) %>
+        </li>
+        <li class="breadcrumb-item active">Add New Study Path</li>
+      </ol>
+      <br>
+      <br>
+      <div class="row container-fluid">
+        <div class="col-3"></div>
+        <div class="card col-6">
+          <div class="card-body">
+            <h3 class="text-primary">Creating new study path</h3>
+            <h6>Please specify the necessary things below.</h6>
+            <br>
+            <%= form_for :study_path, url: study_paths_path, local: true do |f| %>
+              <%= f.text_field :program_revision_code, class: 'form-control form-study-path', autocomplete: 'off', placeholder: 'Program Revision Code' %> 
+              <%= f.select :degree_id, [['B.S. IN COMPUTER SCIENCE', '1']], {include_blank: 'Name'}, {class: 'form-control form-study-path'} %>
+              <%= f.text_field :title, class: 'form-control form-study-path', autocomplete: 'off', placeholder: 'Title' %>
+              <br>
+              <%= f.submit 'Add New Study Path',class: 'form-control btn btn-primary'%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= render "shared/logout_modal" %>
+    </div>
+    <%= render "shared/footer" %>
+  </div>
+</body>

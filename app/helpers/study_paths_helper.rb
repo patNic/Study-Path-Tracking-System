@@ -1,0 +1,2 @@
+module StudyPathsHelper
+end

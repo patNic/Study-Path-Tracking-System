@@ -1,0 +1,37 @@
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <%= render partial: "shared/navigation", object: @study_plan %>
+    <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Charts</li>
+      </ol>
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-area-chart"></i> Semestral Performance
+          </div>
+           <div class="card-body">
+              <span id="gwa-variable" style="display:none;"><%= @gwa.strip! %></span>
+              <span id="label-variable" style="display:none;"><%= @labels.strip! %></span>
+              <canvas id="line-chart"></canvas>
+           </div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-pie-chart"></i> Progress
+          </div>
+           <div class="card-body">
+              <span id="radar-values" style="display:none;"><%= @radar_chart_values %></span>
+              <canvas id="myChart"></canvas>
+           </div>
+        </div>
+      </div>
+      <%= render "shared/logout_modal" %>
+    </div>
+    <%= render "shared/footer" %>
+    <%= javascript_include_tag "charts", "data-turbolinks-track" => true  %>
+  </div>
+</body>

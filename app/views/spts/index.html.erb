@@ -1,0 +1,66 @@
+<body>
+  <div class='container-fluid bg-index full-div'>
+    <div class='row full-div'>
+      <div class='col-sm-1'>
+      </div>
+      <div class='col-sm-3 align-self-center'>
+        <div class='card'>
+          <div class="card-header text-center">
+            <%= image_tag('logo/logo-up.png', :alt => 'UP', :class => 'logo-up') %>
+          </div>
+          <div class='card-body'>
+            <% if flash[:login_error] %>
+              <p class='text-center open-sans-font'><small><%= flash[:login_error] %></small></p>
+            <% end %>
+            <ul class='nav nav-tabs nav-fill'>
+              <li class='nav-item'>
+                <a class='nav-link active' data-toggle='tab' href='#student_login'>
+                  <i class='fa fa-user'></i>
+                </a>
+              </li>
+              <li class='nav-item'>
+                <a class='nav-link' data-toggle='tab' href='#faculty_login'>
+                  <i class='fa fa-user-secret'></i>
+                </a>
+              </li>
+            </ul>
+            <br/>
+            <div class='tab-content'>
+              <div class='tab-pane active container-fluid' id='student_login'>
+                <%= form_for :spts, url: spts_student_login_path, local: true do |f| %>
+                  <%= f.text_field :user, class: 'form-control open-sans-font', autocomplete: 'off', placeholder: 'Student Number', maxlength: '9'%>
+                  <%= f.password_field :password, class: 'form-control open-sans-font', autocomplete: 'off', placeholder: 'Password' %>
+                  <br/>
+                  <%= f.submit 'Login', class: 'btn btn-outline-primary btn-block open-sans-font' %>
+                <% end %>
+              </div>
+              <div class='tab-pane container-fluid' id='faculty_login'>
+                <%= form_for :spts, url: spts_faculty_login_path, local: true do |f| %>
+                  <%= f.text_field :user, class: 'form-control open-sans-font', autocomplete: 'off', placeholder: 'Username' %>
+                  <%= f.password_field :password, class: 'form-control open-sans-font', autocomplete: 'off', placeholder: 'Password' %>
+                  <br/>
+                  <%= f.submit 'Login', class: 'btn btn-outline-primary btn-block open-sans-font' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='col-sm-8 align-self-center'>
+        <h2 class='sub-banner saira-extra-condensed-extra-bold-font'><span class='dark-green'>University of the Philippines</span></h2>
+        <h1 class='banner saira-extra-condensed-extra-bold-font'>STUDY PATH TRACKING SYSTEM</h1>
+        <%= link_to "About", spts_about_path, class: 'btn btn-outline-primary btn-lg open-sans-font', role: 'button' %>
+        <%= link_to "Developers Portal", spts_developers_portal_path, class: 'btn btn-outline-light btn-lg open-sans-font', role: 'button' %>
+      </div>
+    </div>
+    <footer class='footer fixed-bottom'>
+      <div class='container-fluid text-center'>
+        <span class='text-muted open-sans-font'>Copyright © Study Path Tracking System 2018</span>
+      </div>
+    </footer>
+    
+    <!-- Bootstrap core JavaScript-->
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </div>
+</body>

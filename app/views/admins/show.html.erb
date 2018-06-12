@@ -1,0 +1,87 @@
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <a class="navbar-brand" href="/dashboard">Study Path Tracking System</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+       </button>
+    </nav>
+  <div class="container-fluid">
+      <div class ="content_wrapper bg-light">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/admin/dashboard">Admin</a>
+        </li>
+        <li class="breadcrumb-item active">Study Path</li>
+      </ol>
+            <div class="card mb-3">
+              <div class="card-header">
+                <div class="text-left">
+                  <strong>Program Code : </strong><span><%= @studypath.degree_id %></span>
+                </div>
+                <div class="text-left">
+                  <strong>Program Revision Code : </strong><span><%= @studypath.program_revision_code %></span>
+                </div>
+                <div class="text-left">
+                  <strong>Name : </strong><span><%= @program['name'] %></span>
+                </div>
+                <div class="text-left">
+                  <strong>Title : </strong><span><%= @studypath.title %></span>
+                </div>
+               </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>Subject</th>
+                        <th>Name</th>
+                        <th>Units</th>
+                        <th>Prerequisites</th>
+                        <th>Grade</th>
+                      </tr>
+                    </thead>
+                    <% if !@subjects.nil? %>
+                      <% @subjects.each do |content| %>
+                        <tbody>
+                          <tr class="table-primary">
+                            <td colspan="5">
+                              <h6 class="d-inline"><%= content[:year] + " Year - " + content[:semester] + " Semester" %></h6>
+                              <div class="d-inline float-right">
+                                <%= link_to update_subjects_path(@studypath, "year" => content[:year], "semester" => content[:semester]), class: 'btn btn-warning btn-sm', role: 'button' do %>
+                                  <i class="fa fa-fw fa-plus-square"></i> Update Subjects
+                                <% end %>
+                              </div>                        
+                            </td>
+                          <tr>  
+                        </tbody>
+                        <tbody>
+                          <% content[:subjects].each do |subj| %>
+                            <tr>
+                               <%if subj.instance_of? RgepCluster%>
+                                  <td><%= subj.name %></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                               <% else %>
+                                  <td><%= subj.subject_id %></td>
+                                  <td><%= subj.name %></td>
+                                  <td><%= subj.units %></td>
+                                  <td><%= subj.pre_req %></td>
+                                  <td></td>
+                               <% end %>
+                            </tr>
+                          <% end %>
+                        </tbody>
+                      <% end %>
+                    <% end %>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div>
+     </div>
+</body>

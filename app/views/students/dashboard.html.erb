@@ -1,0 +1,160 @@
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <%= render partial: "shared/navigation", object: @study_path %>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/student/dashboard">Student</a>
+        </li>
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
+      <!-- Icon Cards-->
+      <div class="row">
+        <div class="col-xl-3 col-sm-12 mb-3">
+          <div class="card text-white bg-danger o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-bolt"></i>
+              </div>
+              <div class="mr-5">Incurred 5.0's!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="grades?highlight=5s">
+              <span class="float-left">View Details</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-warning o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-warning"></i>
+              </div>
+              <div class="mr-5">Total Incompletes!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="grades?highlight=INCs">
+              <span class="float-left">View Details</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-tasks"></i>
+              </div>
+              <div class="mr-5">Units To Go!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="unitsToGo">
+              <span class="float-left">View Details</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-success o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-trophy"></i>
+              </div>
+              <div class="mr-5">Units Earned!</div>
+            </div>
+            <a class="card-footer text-white clearfix small z-1" href="unitsEarned">
+              <span class="float-left">View Details</span>
+              <span class="float-right">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <!-- Example Bar Chart Card-->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-fw fa-user"></i> Profile
+            </div>
+            <div class="card-body">
+              <div class="text-left">
+                <strong>Student ID : </strong><span><%= @basic_info['student_number'] %></span>
+              </div>
+              <div class="text-left">
+                <strong>Name : </strong><span><%= @basic_info['name'] %></span>
+              </div>
+              <div class="text-left">
+                <strong>Degree Program : </strong><span><%= @basic_info['degree_program'] %></span>
+              </div>
+              <div class="text-left">
+                <strong>Degree Level : </strong><span><%= @basic_info['degree_level'] %></span>
+              </div>
+              <div class="text-left">
+                <strong>Year Level : </strong><span><%= @basic_info['year_level'] %></span>
+              </div>
+              <div class="text-left">
+                <strong>Scholarship : </strong><span><%= @basic_info['scholarship'] %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <!-- Example Pie Chart Card-->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-pie-chart"></i> Radar Chart
+            </div>
+          <div class="card-body">
+              <span id="radar-values" style="display:none;"><%= @radar_chart_values %></span>
+              <canvas id="myChart"></canvas>
+           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-fw fa-calendar"></i> Current Semester Schedule
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Number</th>
+                    <th>Subject</th>
+                    <th>Section</th>
+                    <th>Units</th>
+                    <th>Schedule</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @current_schedule.each do |id, content| %>
+                    <tr>
+                      <td><%= id %></td>
+                      <td><%= content[0] %></td>
+                      <td><%= content[1] %></td>
+                      <td><%= content[2] %></td>
+                      <td><%= content[3] + ' ' + content[4] %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= render "shared/logout_modal" %>
+    </div>
+    <%= render "shared/footer" %>
+    <%= javascript_include_tag "chart2", "data-turbolinks-track" => true  %>
+  </div>
+</body>

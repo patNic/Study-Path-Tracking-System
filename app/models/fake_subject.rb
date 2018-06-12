@@ -1,0 +1,2 @@
+class FakeSubject < ApplicationRecord
+end

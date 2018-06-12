@@ -1,0 +1,57 @@
+/* custom fonts declaration */
+@font-face {
+  font-family: "Saira-Extra-Condensed-Extra-Bold";
+  src: font-url("SairaExtraCondensed-ExtraBold.ttf");
+}
+@font-face {
+  font-family: "Open-Sans-Regular";
+  src: font-url("OpenSans-Regular.ttf");
+}
+
+/* custom fonts usage */
+.saira-extra-condensed-extra-bold-font {
+  font-family: "Saira-Extra-Condensed-Extra-Bold";
+}
+.open-sans-font {
+  font-family: "Open-Sans-Regular";
+}
+
+/* images */
+.bg-index {
+  background: image-url("bg/bg-colors.jpg");
+  background-size: cover;
+}
+.logo-up {
+  width: 75px;
+  height: 75px;
+}
+
+/* divider sizes */
+.full-div {
+  height: 100vh;
+}
+
+/* highlighters */
+.dark-green {
+  color: rgb(10, 68, 36);
+}
+
+/* headers and subheaders */
+.banner {
+  font-size: 80px;
+  color: rgb(255, 255, 255);
+}
+.sub-banner {
+  font-size: 35px;
+  color: rgb(255, 255, 255);
+}
+
+/* alignments */
+.center-middle-text {
+  padding: 70px 0;
+}
+
+/* spacing */
+.form-study-path {
+  margin-bottom: 10px;
+}

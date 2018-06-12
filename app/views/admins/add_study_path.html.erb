@@ -1,0 +1,39 @@
+<body class="fixed-nav bg-dark" id="page-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <a class="navbar-brand" href="/dashboard">Study Path Tracking System</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+       </button>
+    </nav>
+    <div class="container-fluid">
+      <div class ="content_wrapper bg-light">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="/admin/dashboard">Admin</a>
+          </li>
+          <li class="breadcrumb-item active">Update Subjects</li>
+        </ol>
+        <div class="text-center center-middle-text">
+          <div class="text-center center-middle-text">
+          <div class="row container-fluid">
+              <div class="col-3"></div>
+                  <div class="card col-6">
+                      <div class="card-body">
+                        <h3 class="text-primary">Creating new study path</h3>
+                        <h6>Please specify the necessary things below.</h6>
+                        <br>
+                         <%= form_for :study_path, url: study_paths_path, local: true do |f| %>
+                          <%= f.text_field :program_revision_code, class: 'form-control form-study-path', autocomplete: 'off', placeholder: 'Program Revision Code' %> 
+                          <%= f.select :degree_id, ['B.S. IN COMPUTER SCIENCE','B.S. IN ACCOUNTANCY','B.S IN MANAGEMENT','B.S. (BIOLOGY)','B.A. (SOCIAL SCIENCE) ECONOMICS','B.A. (SOCIAL SCIENCE) POLITICAL SCIENCE','B.A. (PSYCHOLOGY)',
+                          'B.A. (COMMUNICATION ARTS)'], {include_blank: 'Name'}, {class: 'form-control form-study-path'} %>
+                          <%= f.text_field :title, class: 'form-control form-study-path', autocomplete: 'off', placeholder: 'Title' %>
+                          <br>
+                          <%= f.submit 'Add New Study Path',class: 'form-control btn btn-primary'%>
+                        <% end %>
+                      </div>
+                  </div>
+              </div>
+           </div>
+      </div>
+    </div>
+</body>

@@ -1,0 +1,44 @@
+<body class="fixed-nav bg-dark" id="page-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <a class="navbar-brand" href="/dashboard">Study Path Tracking System</a>
+    </nav>
+    <div class="container-fluid">
+      <div class ="content_wrapper bg-light">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="/">Admin</a>  
+          </li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </br>
+        <h1 style="color:#add8e6; font-size:350%" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADMIN</h1>
+        
+        <div class="text-center center-middle-text">
+          <div class = "row ">
+               <div class="col-6">
+                  <img src="/images/admin.png" height="300" alt="Admin Icon"/>
+               </div>
+               <br>
+               <div class="col-4 bg-secondary">
+                  <br><br>
+                  <div >
+                    <%= link_to "Add New Study Path", admin_add_study_path_path, class: 'btn btn-primary btn-md open-sans-font', role: 'button' %>
+                  </div>
+                  <br>
+                  <div >
+                      <%= link_to "View Study Path", admin_view_study_path_path, class: 'btn btn-primary btn-md open-sans-font', role: 'button' %>
+                  </div>
+                  <br>
+                  <div >
+                    <%= link_to "Remove Study Path", admin_remove_study_path_path, class: 'btn btn-primary btn-md open-sans-font', role: 'button' %>
+                  </div>
+                  <br>
+                  <div >
+                    <%= link_to "Logout", '/', class: 'btn btn-primary btn-md open-sans-font', role: 'button' %>
+                  </div> 
+               </div>
+          </div>
+      </div>
+    </div>
+</body>

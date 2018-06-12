@@ -1,0 +1,98 @@
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <div class="container-fluid">
+      <div class ="content_wrapper bg-light">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/admin/dashboard">Admin</a>
+        </li>
+        <li class="breadcrumb-item">
+          <%= link_to "Study Path", "/admin/#{@study_path.id}" %>
+        </li>
+        <li class="breadcrumb-item active">Update Subjects</li>
+      </ol>
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-fw fa-bookmark"></i> <%= @year %> Year - <%= @semester %> Semester
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0" id="subjectsTable">
+              <thead class="thead-light">
+                <tr>
+                  <th>Subject</th>
+                  <th>Name</th>
+                  <th>Units</th>
+                  <th>Prerequisites</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if !@current_subjects.nil? %>
+                  <% @current_subjects.each do |subj| %>
+                    <tr>
+                      <% if subj.instance_of? RgepCluster %>
+                        <td><%= subj.name%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      <% else %>
+                         <td><%= subj.subject_id %></td>
+                         <td><%= subj.name %></td>
+                         <td><%= subj.units %></td>
+                         <td><%= subj.pre_req %></td>
+                      <% end %>
+                      <td>
+                         <%= link_to remove_subject_path("study_path" => @study_path.id, "subject" => subj.id, "year" => @year, "semester" => @semester), class: 'btn btn-danger btn-sm', role: 'button' do %>
+                            <i class="fa fa-fw fa-save"></i> Remove
+                          <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">
+          <i class="fa fa-fw fa-database"></i> Number of Units :
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-fw fa-book"></i> Subject Offerings</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Name</th>
+                  <th>Units</th>
+                  <th>Prerequisites</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @subjects.each do |content| %>
+                    <tr>
+                      <td><%= content.subject_id %></td>
+                      <td><%= content.name %></td>
+                      <td><%= content.units %></td>
+                      <td><%= content.pre_req%></td>
+                      <td>
+                          <%= link_to add_subject_path("study_path" => @study_path.id, "subject" => content.id, "year" => @year, "semester" => @semester), class: 'btn btn-warning btn-sm', role: 'button' do %>
+                            <i class="fa fa-fw fa-save"></i> Add
+                          <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">All subjects are based from crs.upv.edu.ph.</div>
+       </div>
+      </div>
+     </div>
+</body>

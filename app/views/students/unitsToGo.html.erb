@@ -1,0 +1,28 @@
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <%= render partial: "shared/navigation", object: @study_plan %>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/student/dashboard">Student</a>
+        </li>
+        <li class="breadcrumb-item active">Units to go</li>
+      </ol>
+      <div class="col-lg-12">
+        <!-- Example Pie Chart Card-->
+        <div class="card mb-3">
+           <div class="card-header">
+              <i class="fa fa-shopping-cart"></i>   Units To Go !!
+           </div>
+         <div class="card-body">
+            <div class = "row">
+                <div class = "total units" style = "font-size:120px;">&nbsp;<%=@units_remaining %> UNITS TO GO!! </div>
+            </div>
+         </div>
+        </div>
+      <%= render "shared/logout_modal" %>
+    </div>
+    <%= render "shared/footer" %>
+  </div>
+</body>
