@@ -329,5 +329,7 @@ units: 3, isGe: true, rgep: "GE (MST)")
 Subject.create(division_id: 2, fake_subject_id: nil, subject_id: "CMSC 197", name: "Trading",units: 3, isGe: true, rgep: "Elective")
 RgepCluster.create name: "PE 1", units: 2
 StudyPathSubject.create study_path_id: 4, subject_id: nil, rgep: 7, year: "First", semester: "First"
-
+a=Subject.find_by subject_id: "CMSC 140"
+a.rgep = "Elective"
+a.save
 Admin.create(user_name: "jd_ultra_man", password: "ultra_power")
