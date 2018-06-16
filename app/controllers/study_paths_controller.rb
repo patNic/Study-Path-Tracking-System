@@ -317,7 +317,7 @@ end
     if @study_path.subjects.count == 0
        @subjects = Subject.group(:subject_id)
     else
-      @subjects = Subject.group(:subject_id)
+      @subjects = Subject.group(:subject_id, :id)
       
       @study_path_subjects.each do |s|
         @subjects = (@subjects.where.not id: s.subject_id).group(:subject_id)
