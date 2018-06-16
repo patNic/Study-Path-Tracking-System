@@ -315,7 +315,7 @@ end
     
     @study_path_subjects = StudyPathSubject.where study_path_id: @id
     if @study_path.subjects.count == 0
-       @subjects = Subject.group(:subject_id)
+       @subjects = Subject.group(:subject_id, :id)
     else
       @subjects = Subject.group(:subject_id, :id)
       
