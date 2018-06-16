@@ -54,7 +54,6 @@ var ctx = document.getElementById("myChart");
 var points1 = document.getElementById("radar-values").innerHTML;
 var points = points1.substr(1).slice(0, -1).split(",");
 var points2 = [];
-window.alert("YOW");
 var i;
 for(i = 0; i < points.length; i++) {
   points2.push(parseFloat(points[i]));

@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   resources :admins
   get 'admin/dashboard', :to => 'admins#dashboard'
   post 'admin/dashboard', :to => 'admins#dashboard'
+  get 'admin/add_new_subject', :to => 'admins#add_new_subject'
+  post 'admin/add_new_subject', :to => 'admins#new_subject'
+  get 'admin/new_subject', :to => 'admins#new_subject'
+  post 'admin/new_subject', :to => 'admins#new_subject'
+  get 'admin/new_subject', :to => 'admins#new_subject'
   get 'admin/add_study_path', :to => 'admins#add_study_path'
   get 'admin/view_study_path', :to => 'admins#view_study_path'
   get 'admin/remove_study_path', :to => 'admins#remove_study_path'

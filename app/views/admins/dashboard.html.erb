@@ -26,13 +26,23 @@
                     <%= link_to "Add New Study Path", admin_add_study_path_path, class: 'btn btn-primary btn-md open-sans-font', role: 'button' %>
                   </div>
                   <br>
-                  <div >
-                      <%= link_to "View Study Path", admin_view_study_path_path, class: 'btn btn-primary btn-md open-sans-font', role: 'button' %>
+                  <div class = "row">
+                    <div class = "col-6">
+                      <div >
+                        <%= link_to "View Study Path", admin_view_study_path_path, class: 'btn btn-primary btn-md open-sans-font', role: 'button' %>
+                      </div>
+                    </div>
+                    <div class = "col-6">
+                        <div >
+                          <%= link_to "Remove Study Path", admin_remove_study_path_path, class: 'btn btn-primary btn-md open-sans-font', role: 'button' %>
+                        </div>
+                    </div>
+                    <br>
                   </div>
                   <br>
-                  <div >
-                    <%= link_to "Remove Study Path", admin_remove_study_path_path, class: 'btn btn-primary btn-md open-sans-font', role: 'button' %>
-                  </div>
+                   <div >
+                     <%= link_to "Add New Subject", admin_add_new_subject_path, class: 'btn btn-primary btn-md open-sans-font', role: 'button' %>
+                   </div>
                   <br>
                   <div >
                     <%= link_to "Logout", '/', class: 'btn btn-primary btn-md open-sans-font', role: 'button' %>

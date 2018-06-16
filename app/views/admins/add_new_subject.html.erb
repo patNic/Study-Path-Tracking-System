@@ -1,0 +1,57 @@
+<body class="fixed-nav bg-dark" id="page-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <a class="navbar-brand" href="/dashboard">Study Path Tracking System</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+       </button>
+    </nav>
+    <div class="container-fluid">
+      <div class ="content_wrapper bg-light">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="/admin/dashboard">Admin</a>
+          </li>
+          <li class="breadcrumb-item active">Update Subjects</li>
+        </ol>
+        <div class="text-center center-middle-text">
+          <div class="text-center center-middle-text">
+          <div class="row container-fluid">
+              <div class="col-3"></div>
+                  <div class="card col-6">
+                      <div class="card-body">
+                        <h3 class="text-primary">Adding New Subject</h3>
+                        <h6>Please specify the necessary things below.</h6>
+                         <% if flash[:new_subject] %>
+                            <% if flash[:new_subject].include? "Error"%>
+                              <p class='text-center open-sans-font'><h3 class = 'text-danger'><%= flash[:new_subject] %></h3>
+                            <% else %>
+                               <p class='text-center open-sans-font'><h3 class = 'text-success'><%= flash[:new_subject] %></h3>
+                            <% end %>
+                         <% end %>
+                        <br>
+                         <%= form_for :subject, url: admin_new_subject_path, local: true do |f| %>
+                          <%= f.text_field :subject_code, class: 'form-control form-subject', autocomplete: 'off', placeholder: 'Subject Code: e.g. CMSC 11' %> 
+                          <br>
+                          <%= f.select :division, ['HUM', 'SOCSCI', 'NSMD', 'MGT'], {include_blank: 'Division'}, {class: 'form-control form-subject'} %>
+                          <br>
+                          <%= f.text_field :name, class: 'form-control form-subject', autocomplete: 'off', placeholder: 'Subject Title : e.g Introduction to Computer Science' %> 
+                          <br>
+                          <%= f.text_field :pre_req, class: 'form-control form-subject', autocomplete: 'off', placeholder: 'Prerequisite(s):  (separated by commas if more than one)' %> 
+                          <br>
+                          <%= f.text_field :units, class: 'form-control form-subject', autocomplete: 'off', placeholder: 'Units: e.g. 1, 2 ,3 ' %> 
+                          <br>
+                          <%= f.text_field :description, class: 'form-control form-subject', autocomplete: 'off', placeholder:  'Subject Description' %>
+                          <br>
+                          <%= f.select :isGE, ['false', 'true'], {include_blank: 'is GE?'},{class: 'form-control form-subject'} %>
+                          <br>
+                          <%= f.select :rgep, ['PE 1', 'PE 2', 'ELECTIVE', 'GE (MST)', 'GE (AH)', 'GE (SSP)', 'NSTP'], {include_blank: 'RGEP Cluster'},{class: 'form-control form-subject'} %>
+                          <br>
+                          <%= f.submit 'Add New Subject',class: 'form-control btn btn-primary'%>
+                        <% end %>
+                      </div>
+                  </div>
+              </div>
+           </div>
+      </div>
+    </div>
+</body>
